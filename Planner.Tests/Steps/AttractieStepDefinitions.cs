@@ -42,7 +42,6 @@ public sealed class AttractieStepDefinitions
         response = await _client.ExecutePostAsync(request);
     }
 
-
     // ID Nummer niet gevonden
     [Given(@"attractie Reuzenrad bestaat niet")]
     public void GivenAttractieReuzenradBestaatNiet()
@@ -53,7 +52,7 @@ public sealed class AttractieStepDefinitions
     public void WhenAttractieReuzenradWordtVerwijdert()
     {
         var request = new RestRequest("api/Attracties/1");
-        // response = _client.ExecuteDeleteAsync(request);
+        response = _client.Execute(request);
     }
 
     // Bestaat Niet
@@ -67,7 +66,7 @@ public sealed class AttractieStepDefinitions
     public async void WhenAttractieIdNummerWordtOpgevraagd(int p0)
     {
         var request = new RestRequest($"api/Attractie/{p0}");
-        // response = _client.ExecutePostAsync(request);
+        response = _client.Execute(request);
     }
 
     [Then("moet er een error (.*) komen")]
